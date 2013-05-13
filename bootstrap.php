@@ -14,4 +14,4 @@ $conn = array(
         'path' => __DIR__ . '/db.sqlite'
         );
 
-$entitiManager = EntityManager::create($conn, $config);
+$entityManager = EntityManager::create($conn, $config);
