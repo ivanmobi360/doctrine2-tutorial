@@ -14,5 +14,5 @@ $rows = $entityManager->createQuery($dql)
 
 
 foreach ($rows as $row){
-    echo $row['name'] . ' has ' . $row['openBugs']  . "open bugs!\n";
+    echo $row['name'] . ' has ' . $row['openBugs']  . " open bugs!\n";
 }

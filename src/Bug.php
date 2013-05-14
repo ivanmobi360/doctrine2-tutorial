@@ -128,6 +128,11 @@ class Bug
 	{
 		return $this->products;
 	}
+	
+	function close()
+	{
+	    $this->status = "CLOSED";
+	}
 
 	
 }

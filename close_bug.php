@@ -12,6 +12,6 @@ if (null == $bug)
     exit(1);
 }
 
-echo "Bug: " . $bug->getDescription() . "\n";
-echo "Engineer: " . $bug->getEngineer()->getName() . "\n";
-echo "Status: " . $bug->getStatus();
+$bug->close();
+
+$entityManager->flush();
