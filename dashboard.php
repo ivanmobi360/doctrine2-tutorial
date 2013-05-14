@@ -24,15 +24,3 @@ echo "You have created or assigned " . count($myBugs) . " open bugs:\n\n";
 foreach ($myBugs as $bug){
     echo $bug->getId() . " - " . $bug->getDescription() . "\n";
 }
-
-/*
-$product = $entityManager->find('Product', $id);
-
-if (null == $product)
-{
-    echo "No product found.\n";
-    exit(1);
-}
-
-echo sprintf("-%s\n", $product->getName());
-*/
