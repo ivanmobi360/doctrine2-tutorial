@@ -1,5 +1,6 @@
 <?php 
 
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * 
  * @Entity(repositoryClass="BugRepository") @Table(name="bugs")
@@ -33,6 +34,31 @@ class Bug
 	 * @var string
 	 */
 	protected $status;
+	
+	/**
+	 * 
+	 * @ManyToOne(targetEntity="User", inversedBy="assignedBugs")
+	 */
+	protected $engineer;
+	
+	/**
+	 * 
+	 * @ManyToOne(targetEntity="User", inversedBy="reportedBugs")
+	 */
+	protected $reporter;
+	
+	/**
+	 * 
+	 * @ManyToMany(targetEntity="Product")
+	 */
+	protected $products;
+	
+	function __construct()
+	{
+		$this->products = new ArrayCollection();
+	}
+	
+	
 	
 	/**
 	 * @return the $id
@@ -69,6 +95,38 @@ class Bug
 
 	public function setStatus($status) {
 		$this->status = $status;
+	}
+	
+	
+	
+	public function setEngineer($engineer)
+	{
+		$engineer->assignedToBug($this);
+		$this->engineer = $engineer;
+	}
+	
+	public function setReporter($reporter)
+	{
+		$reporter->addReportedBug($this);
+		$this->reporter = $reporter;
+	}
+	
+	public function getEngineer() {
+		return $this->engineer;
+	}
+
+	public function getReporter() {
+		return $this->reporter;
+	}
+	
+	public function assignToProduct($product)
+	{
+		$this->products[] = $product;
+	}
+
+	public function getProducts()
+	{
+		return $this->products;
 	}
 
 	
